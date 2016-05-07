@@ -23,19 +23,23 @@ class RepeatedFile:
             path = self._search_path
         for (dirpath, dirnames, filenames) in os.walk(path):
             for filename in filenames:
-                file_full_path = dirpath + '/' + filename
+                file_full_path = os.path.join(dirpath, filename)
                 sha1value = self.calc_sha1(file_full_path)
                 if sha1value not in self.file_dict:
                     self.file_dict[sha1value] = []
                 self.file_dict[sha1value].append(file_full_path)
 
-            for dirname in dirnames:
-                self.get_all_files(dirpath + '/' + dirname)
+                # for dirname in dirnames:
+                #     self.get_all_files(dirpath + '/' + dirname)
 
     def calc_sha1(self, filepath):
+        lenth = 1024 * 1024
         with open(filepath, 'rb') as f:
             sha1obj = hashlib.sha1()
-            sha1obj.update(f.read())
+            # file_size=os.path.getsize(filepath)
+            # if file_size<lenth:
+            #     file_size
+            sha1obj.update(f.read(lenth))
             hash = sha1obj.hexdigest()
             return hash
 
