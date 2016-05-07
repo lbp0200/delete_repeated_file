@@ -33,7 +33,7 @@ class RepeatedFile:
                 #     self.get_all_files(dirpath + '/' + dirname)
 
     def calc_sha1(self, filepath):
-        lenth = 1024 * 1024
+        lenth = 1024 * 1024 * 10
         with open(filepath, 'rb') as f:
             sha1obj = hashlib.sha1()
             # file_size=os.path.getsize(filepath)

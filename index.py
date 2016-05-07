@@ -3,5 +3,5 @@
 import RepeatedFile
 
 if __name__ == "__main__":
-    rf = RepeatedFile.RepeatedFile('/home/lbp/新建文件夹 (复件)')
-    rf.get_repeate_file(['(1)'])
+    rf = RepeatedFile.RepeatedFile()
+    rf.get_repeate_file(['(1)', '（1）'])
